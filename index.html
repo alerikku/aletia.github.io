@@ -3,709 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ale & Tia: Final Mix - Wedding Quest 2027</title>
-    <!-- FONTS VIDEOLUDICI E ELEGANTI -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <title>Alessandra & Mattia | Wedding</title>
+    
+    <!-- FONTS ELEGANTI -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
         :root {
-            /* TUSCANY CHIC PALETTE */
-            --bg-cream: #FDFBF7;
-            --tuscan-wine: #722F37;
-            --tuscan-wine-dark: #4A1C24;
-            --tuscan-olive: #6B705C;
-            --tuscan-olive-dark: #414833;
-            --tuscan-gold: #C5A059;
-            --tuscan-gold-light: #E3CFA8;
+            --bg-color: #FDFBF7;
+            --bg-white: #FFFFFF;
             --text-dark: #2C2C2C;
-            --text-light: #FDFBF7;
+            --text-light: #7A7A7A;
+            --gold: #C5A059;
+            --gold-hover: #A88644;
         }
 
-        /* --- RESET E FIX MOBILE --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
-        body { background-color: var(--bg-cream); color: var(--text-dark); font-family: 'Montserrat', sans-serif; }
+        html, body { scroll-behavior: smooth; width: 100%; overflow-x: hidden; }
+        body { background-color: var(--bg-color); color: var(--text-dark); font-family: 'Montserrat', sans-serif; line-height: 1.6; }
 
-        /* --- LANGUAGE TOGGLE SYSTEM --- */
+        /* --- LANGUAGE TOGGLE --- */
         body.lang-it .en { display: none !important; }
         body.lang-en .it { display: none !important; }
 
         .lang-switcher {
             position: fixed; top: 20px; right: 20px; z-index: 1000;
-            display: flex; gap: 5px;
-            background: rgba(253, 251, 247, 0.9);
-            padding: 8px; border: 2px solid var(--tuscan-gold); border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex; gap: 10px; background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px; border-radius: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             backdrop-filter: blur(5px);
         }
         .lang-btn {
-            background: none; border: none; color: var(--tuscan-olive);
-            font-family: 'Press Start 2P', cursive; font-size: 0.6rem;
-            cursor: pointer; opacity: 0.5; transition: 0.3s; padding: 5px 8px;
+            background: none; border: none; color: var(--text-light);
+            font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 500;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        .lang-btn.active { color: var(--tuscan-wine); opacity: 1; text-shadow: 0px 0px 1px var(--tuscan-wine); }
-        .lang-btn:hover { opacity: 1; }
+        .lang-btn.active { color: var(--gold); font-weight: 600; }
 
-        .section {
-            min-height: 100vh;
-            padding: clamp(60px, 10vw, 80px) clamp(15px, 5vw, 20px);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            position: relative; 
-        }
+        /* --- TYPOGRAPHY & LAYOUT --- */
+        h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 400; text-align: center; }
+        .title { font-size: clamp(2rem, 8vw, 4rem); color: var(--gold); letter-spacing: 2px; }
+        .subtitle { font-size: clamp(1rem, 3vw, 1.2rem); color: var(--text-light); font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-top: 10px; }
+        .section-title { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 40px; color: var(--text-dark); }
+        
+        .section { padding: clamp(60px, 10vw, 100px) clamp(20px, 5vw, 40px); display: flex; flex-direction: column; align-items: center; max-width: 1000px; margin: 0 auto; }
+        .divider { width: 50px; height: 1px; background-color: var(--gold); margin: 30px auto; }
 
-        /* --- CLASSI FONT TEMATICI --- */
-        .font-retro { font-family: 'Press Start 2P', cursive; text-transform: uppercase; line-height: 1.4; }
-        .font-p5 { font-family: 'Anton', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
-        .font-mgs { font-family: 'VT323', monospace; }
-        .font-zelda { font-family: 'Cinzel', serif; letter-spacing: 2px; font-weight: 700; }
-        .font-ctr { font-family: 'Bangers', cursive; letter-spacing: 1px; }
-
-        /* --- FRECCE DI SCROLL --- */
-        .scroll-indicator {
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-            display: flex; flex-direction: column; align-items: center; gap: 2px;
-            color: var(--tuscan-gold); text-decoration: none; animation: bounce 2s infinite; z-index: 10;
-        }
-        .scroll-indicator i { font-size: 1.5rem; filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3)); }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translate(-50%, 0);}
-            40% {transform: translate(-50%, -10px);}
-            60% {transform: translate(-50%, -5px);}
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         #hero {
-            background: linear-gradient(rgba(107, 112, 92, 0.6), rgba(74, 28, 36, 0.7)), url('https://www.ilgrandeprato.it/wp-content/uploads/2019/02/matrimoni-toscana-piscina.jpg') center/cover;
-            color: var(--text-light); text-align: center;
-        }
-        #hero h1 { font-size: clamp(1.8rem, 6vw, 3.5rem); text-shadow: 3px 3px 0px var(--tuscan-wine); margin-bottom: 20px; user-select: none; color: var(--tuscan-gold-light); }
-        .kh-menu { list-style: none; margin-top: 30px; font-size: clamp(0.55rem, 2vw, 0.8rem); line-height: 2.5; display: flex; flex-direction: column; align-items: center; }
-        .kh-menu li { margin: 8px; cursor: pointer; transition: 0.3s; background: rgba(0,0,0,0.3); padding: 5px 20px; border-radius: 20px; border: 1px solid transparent; width: 100%; max-width: 300px;}
-        .kh-menu li:hover { color: var(--tuscan-gold); border-color: var(--tuscan-gold); transform: translateY(-3px); background: rgba(0,0,0,0.6);}
-        .kh-menu a { text-decoration: none; color: inherit; display: block;}
-
-        /* --- MGS3 CODEC SECTION (Tuscany Radio Variant) --- */
-        #codec {
-            background-color: var(--tuscan-olive-dark); color: var(--tuscan-gold-light); 
-            border-top: 5px solid var(--tuscan-gold); border-bottom: 5px solid var(--tuscan-gold);
-            padding: 60px 20px; display: flex; flex-direction: column; align-items: center; width: 100%; position: relative;
-        }
-        .codec-freq { 
-            font-size: clamp(2rem, 6vw, 3.5rem); margin-bottom: 30px; 
-            color: var(--tuscan-gold); text-shadow: 0 0 10px rgba(197, 160, 89, 0.5); 
-            cursor: pointer; user-select: none; transition: 0.3s;
-        }
-        .codec-freq:hover { transform: scale(1.05); }
-        .codec-faces { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 600px; margin-bottom: 30px; gap: 10px; }
-        .codec-face {
-            width: clamp(70px, 20vw, 100px); height: clamp(80px, 25vw, 120px); border: 2px solid var(--tuscan-gold);
-            background: rgba(197, 160, 89, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;
-            position: relative; border-radius: 8px;
-        }
-        .codec-face i { font-size: clamp(30px, 8vw, 50px); color: var(--tuscan-gold); margin-bottom: 10px; }
-        .codec-face span { position: absolute; bottom: -25px; font-size: clamp(1.2rem, 3vw, 1.4rem); color: var(--tuscan-gold-light); }
-        .codec-wave { flex-grow: 1; height: 30px; display: flex; flex-direction: column; justify-content: space-around; padding: 0 10px; }
-        .wave-line { height: 2px; background-color: var(--tuscan-gold); opacity: 0.5; animation: pulse 0.8s infinite alternate; }
-        @keyframes pulse { from { opacity: 0.2; transform: scaleY(1); } to { opacity: 0.8; transform: scaleY(2); } }
-        
-        .codec-dialogue {
-            width: 100%; max-width: 600px; border: 2px solid var(--tuscan-gold); padding: 25px; 
-            background: rgba(44, 44, 44, 0.6); border-radius: 8px;
-            font-size: clamp(1.2rem, 4vw, 1.5rem); line-height: 1.6; box-shadow: inset 0 0 20px rgba(0,0,0,0.3);
-        }
-        .codec-dialogue p { margin-bottom: 15px; opacity: 0; transform: translateX(-10px); color: var(--bg-cream); }
-        .codec-dialogue strong { color: var(--tuscan-gold); font-size: 1.1em; }
-        .start-dialogue .line-1 { animation: typeReveal 0.5s forwards 0.5s; }
-        .start-dialogue .line-2 { animation: typeReveal 0.5s forwards 2.5s; }
-        .start-dialogue .line-3 { animation: typeReveal 0.5s forwards 4.5s; }
-        @keyframes typeReveal { 100% { opacity: 1; transform: translateX(0); } }
-
-        /* --- STATUS SCREEN (Classic RPG Vibe) --- */
-        #stats { background-color: var(--bg-cream); }
-        .ff-title { font-size: clamp(1.2rem, 4vw, 2rem); margin-bottom: 40px; color: var(--tuscan-wine); text-align: center; }
-        .stats-container { display: grid; grid-template-columns: 1fr; gap: 40px; width: 100%; max-width: 1000px; }
-        @media (min-width: 768px) { .stats-container { grid-template-columns: 1fr 1fr; } }
-        
-        .ff-menu {
-            background: var(--tuscan-wine);
-            border: 6px double var(--tuscan-gold); border-radius: 12px; padding: clamp(20px, 4vw, 30px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            color: var(--text-light); position: relative; cursor: pointer; overflow: hidden; user-select: none;
-        }
-        .ff-menu h3 { font-size: clamp(0.9rem, 3vw, 1.2rem); margin-bottom: 20px; border-bottom: 1px solid var(--tuscan-gold-light); padding-bottom: 10px; color: var(--tuscan-gold); }
-        .stat-label { display: flex; justify-content: space-between; font-size: clamp(0.5rem, 2vw, 0.6rem); margin-bottom: 8px; color: var(--bg-cream); }
-        .stat-bar { height: 10px; background: rgba(0,0,0,0.3); width: 100%; margin-bottom: 18px; border-radius: 5px; overflow: hidden; }
-        .stat-fill { height: 100%; background: var(--tuscan-olive); border-radius: 5px; }
-        .stat-fill.gold { background: linear-gradient(to right, var(--tuscan-gold), #FFF8E7); }
-        .master-tag { color: var(--tuscan-gold-light); }
-
-        /* EASTER EGG CSS BASE */
-        .secret-egg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--tuscan-olive-dark); border: 6px double var(--tuscan-gold); 
+            height: 100vh; max-width: 100%;
+            background: linear-gradient(rgba(253, 251, 247, 0.3), rgba(253, 251, 247, 0.9)), url('https://www.ilgrandeprato.it/wp-content/uploads/2019/02/matrimoni-toscana-piscina.jpg') center/cover;
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            font-size: clamp(1.5rem, 6vw, 3rem); line-height: 1.2; padding: 15px; color: var(--bg-cream);
-            z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.2s ease-in-out;
         }
-        .secret-egg.active { opacity: 1; }
-
-        .miniboss-tooltip { position: relative; cursor: help; border-bottom: 2px dotted var(--tuscan-gold); color: var(--tuscan-gold-light); font-weight: bold;}
-        .miniboss-tooltip::after {
-            content: attr(data-stats); position: absolute; bottom: 120%; left: 50%;
-            transform: translateX(-50%); background: var(--text-dark); color: var(--tuscan-gold);
-            font-family: 'Press Start 2P', monospace; font-size: 0.5rem; padding: 12px;
-            border: 2px solid var(--tuscan-gold); width: max-content; max-width: 220px; 
-            white-space: normal; line-height: 1.6; text-align: center; border-radius: 8px;
-            opacity: 0; pointer-events: none; transition: 0.3s; z-index: 100; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        }
-        .miniboss-tooltip:hover::after, .miniboss-tooltip:active::after { opacity: 1; bottom: 150%; }
-
-        .lootable { color: var(--tuscan-gold); cursor: pointer; transition: 0.2s; font-weight: bold; }
-        .lootable:hover { transform: scale(1.05); display: inline-block; text-shadow: 0 0 5px var(--tuscan-gold-light); }
-
-        .floating-loot {
-            position: absolute; color: var(--tuscan-gold); font-family: 'Press Start 2P', monospace;
-            font-size: 0.7rem; pointer-events: none; animation: floatUp 1.2s forwards; z-index: 9999;
-            text-shadow: 1px 1px 0 #000;
-        }
-        @keyframes floatUp { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-60px); opacity: 0; } }
-
-        .zelda-secret { cursor: pointer; transition: 0.3s; }
-        .zelda-secret:hover { color: var(--tuscan-gold); text-shadow: 0 0 10px var(--tuscan-gold); }
-
-        .missingno {
-            position: fixed; bottom: 10px; right: 10px; width: 25px; height: 25px;
-            background: repeating-linear-gradient(45deg, var(--tuscan-wine) 0, var(--tuscan-wine) 2px, var(--tuscan-gold) 2px, var(--tuscan-gold) 4px);
-            cursor: pointer; opacity: 0.2; transition: 0.2s; z-index: 9999; border: 1px solid #000; border-radius: 3px;
-        }
-        .missingno:hover { opacity: 1; transform: scale(1.2); }
-
-        body.god-mode { font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif !important; }
-        body.god-mode h1, body.god-mode h2, body.god-mode h3 { font-family: 'Comic Sans MS', sans-serif !important; text-transform: none; }
-
-        /* --- STORY SECTION (Chic Cards) --- */
-        #story { background-color: var(--tuscan-olive-dark); color: var(--text-light); }
-        .p5-title {
-            font-size: clamp(2rem, 6vw, 3.5rem); color: var(--tuscan-gold);
-            margin-bottom: 40px; text-align: center; border-bottom: 2px solid var(--tuscan-wine); padding-bottom: 10px;
-        }
-        .story-grid { display: grid; grid-template-columns: 1fr; gap: 30px; width: 100%; max-width: 1100px; }
-        @media (min-width: 768px) { .story-grid { grid-template-columns: 1fr 1fr; } }
         
-        .story-card {
-            background: var(--bg-cream); color: var(--text-dark);
-            padding: clamp(20px, 5vw, 30px); border-radius: 12px; border: 1px solid var(--tuscan-gold);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2); transition: transform 0.3s;
-        }
-        .story-card:hover { transform: translateY(-5px); }
-        .story-card h3 { font-size: clamp(1.2rem, 4vw, 1.5rem); margin-bottom: 15px; color: var(--tuscan-wine); border-bottom: 1px dashed var(--tuscan-olive); padding-bottom: 10px; }
-        .story-card p { font-size: clamp(0.95rem, 3vw, 1.05rem); line-height: 1.6; }
+        .nav-links { list-style: none; display: flex; gap: 20px; margin-top: 40px; flex-wrap: wrap; justify-content: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
 
-        /* --- LOCATION E MAPPA --- */
-        #location { background: var(--bg-cream); }
-        .zelda-title { font-size: clamp(2rem, 6vw, 3rem); color: var(--tuscan-olive); text-align: center; margin-bottom: 10px; }
-        .loc-image-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 40px; width: 100%; max-width: 900px; }
-        .loc-image-grid img { width: 100%; height: clamp(120px, 30vw, 220px); object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .video-container { width: 100%; max-width: 900px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
-        .video-container iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+        /* --- LOCATION --- */
+        .location-box { text-align: center; background: var(--bg-white); padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); width: 100%; }
+        .location-box p { margin-bottom: 15px; font-size: 1rem; color: var(--text-light); }
+        .location-box strong { color: var(--text-dark); font-weight: 500; }
         
-        .ctr-style {
-            width: 100%; max-width: 900px; padding: clamp(20px, 4vw, 30px); 
-            border: 2px solid var(--tuscan-gold); border-radius: 12px; background-color: #fff;
-            text-align: center; box-shadow: 0 5px 15px rgba(197, 160, 89, 0.1);
-        }
-
-        /* --- DOVE DORMIRE --- */
-        #accommodation {
-            background-color: var(--tuscan-wine-dark); color: var(--tuscan-gold-light);
-            text-align: center; position: relative;
-        }
-        .sw-title { font-weight: 700; font-size: clamp(1.8rem, 5vw, 3rem); color: var(--tuscan-gold); margin-bottom: 30px; letter-spacing: 2px; }
-        .sw-container {
-            width: 100%; max-width: 800px; background: rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--tuscan-gold); padding: clamp(30px, 5vw, 50px);
-            border-radius: 12px; transition: all 0.3s ease; backdrop-filter: blur(5px);
-        }
-        .sw-container p { font-size: clamp(1rem, 3vw, 1.2rem); line-height: 1.8; margin-bottom: 20px; }
-        .sw-container strong { color: var(--bg-cream); }
-
-        /* --- EQUIPAGGIAMENTO --- */
-        #equipment { background-color: var(--bg-cream); color: var(--text-dark); }
-        .ffx-grid { display: grid; grid-template-columns: 1fr; gap: 25px; width: 100%; max-width: 1000px; margin-top: 20px; }
-        @media (min-width: 768px) { .ffx-grid { grid-template-columns: 1fr 1fr; } }
-        .ffx-card {
-            background: #fff; border: 1px solid var(--tuscan-gold-light); border-radius: 12px; padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; overflow: hidden;
-        }
-        .ffx-card h3 { font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 4vw, 1.4rem); color: var(--tuscan-olive); margin-bottom: 15px; border-bottom: 1px solid rgba(107, 112, 92, 0.2); padding-bottom: 10px; font-weight: 700; }
-        .ffx-card p { font-size: clamp(0.95rem, 3vw, 1.05rem); line-height: 1.6; margin-bottom: 12px; }
-        .ffx-card strong { color: var(--tuscan-wine); }
-
         /* --- PROGRAMMA --- */
-        #program { background: var(--tuscan-olive); color: var(--text-light); }
-        .quest-title { font-size: clamp(1.8rem, 6vw, 3rem); text-align: center; margin-bottom: 50px; color: var(--tuscan-gold); }
-        .quest-item { background: var(--bg-cream); color: var(--text-dark); border-left: 8px solid var(--tuscan-wine); border-radius: 0 12px 12px 0; padding: 30px; margin: 15px 0; width: 100%; max-width: 800px; box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
-        .quest-item h3 { font-size: clamp(0.8rem, 3vw, 1.1rem); margin-bottom: 15px; color: var(--tuscan-olive-dark); line-height: 1.5; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .quest-item p { font-size: clamp(0.95rem, 3vw, 1.05rem); line-height: 1.6; margin-bottom: 10px; }
-        .quest-detail { font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--tuscan-wine); margin-top: 20px; display: block; line-height: 1.6; opacity: 0.8;}
+        .timeline { width: 100%; display: flex; flex-direction: column; gap: 30px; }
+        .timeline-item { background: var(--bg-white); padding: 30px; border-left: 3px solid var(--gold); box-shadow: 0 5px 20px rgba(0,0,0,0.02); }
+        .timeline-item h3 { font-size: 1.2rem; text-align: left; margin-bottom: 10px; color: var(--gold); }
+        .timeline-item p { font-size: 0.95rem; color: var(--text-light); }
 
-        /* --- RSVP --- */
-        #rsvp { background-color: var(--tuscan-wine); color: var(--text-light); }
-        .rsvp-title { font-size: clamp(1.5rem, 5vw, 2.5rem); text-align: center; margin-bottom: 40px; color: var(--tuscan-gold); }
-        .rsvp-form-mock { background: var(--bg-cream); color: var(--text-dark); padding: clamp(25px, 5vw, 40px); border-radius: 12px; width: 100%; max-width: 650px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .pixel-form { display: flex; flex-direction: column; gap: 20px; margin-top: 10px; }
+        /* --- RSVP FORM --- */
+        #rsvp { background-color: var(--bg-white); width: 100%; max-width: 100%; padding: clamp(60px, 10vw, 100px) 20px; }
+        .form-container { max-width: 600px; margin: 0 auto; width: 100%; }
+        .elegant-form { display: flex; flex-direction: column; gap: 25px; }
         
-        /* Form Label & Inputs */
-        .pixel-form label { font-size: clamp(0.6rem, 2vw, 0.7rem); color: var(--tuscan-olive-dark); line-height: 1.5; font-weight: bold;}
+        .input-group { display: flex; flex-direction: column; gap: 8px; }
+        .elegant-form label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); font-weight: 500; }
         
-        /* FIX iOS ZOOM: font-size 16px min */
-        .pixel-form input, .pixel-form select, .pixel-form textarea { 
-            width: 100%; padding: 14px; font-family: 'Montserrat', sans-serif; font-size: 16px; 
-            border: 1px solid var(--tuscan-gold); background: #fff; border-radius: 6px; color: var(--text-dark); outline: none;
+        /* Fix iOS Zoom: 16px min-size on inputs */
+        .elegant-form input, .elegant-form select, .elegant-form textarea {
+            width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #CCC; background: transparent;
+            font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text-dark); outline: none; transition: border-color 0.3s;
         }
-        .pixel-form input:focus, .pixel-form select:focus, .pixel-form textarea:focus { border-color: var(--tuscan-wine); box-shadow: 0 0 5px rgba(114, 47, 55, 0.2); }
+        .elegant-form input:focus, .elegant-form select:focus, .elegant-form textarea:focus { border-color: var(--gold); }
         
-        .pixel-btn-submit { 
-            background: var(--tuscan-olive); color: var(--text-light); font-size: clamp(0.7rem, 3vw, 0.9rem); 
-            padding: 18px; border: none; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: 0.3s; font-weight: bold; letter-spacing: 1px;
+        .submit-btn {
+            background-color: var(--gold); color: white; border: none; padding: 18px 40px; font-size: 0.9rem;
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 20px; font-family: 'Montserrat', sans-serif;
         }
-        .pixel-btn-submit:hover { background: var(--tuscan-olive-dark); transform: translateY(-2px); box-shadow: 0 5px 10px rgba(0,0,0,0.2); }
-        
-        .form-row-inline { display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
-        .form-row-inline > label { flex-shrink: 0; }
-        .form-row-inline > select, .form-row-inline > input { flex-grow: 1; min-width: 120px; }
-        
-        .pixel-btn-small { background: var(--tuscan-gold); color: #fff; border: none; border-radius: 5px; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; padding: 10px 15px; cursor: pointer; transition: 0.3s;}
-        .pixel-btn-small:hover { background: var(--tuscan-wine); }
-        
-        #miniboss-section { border: 1px solid #eee; border-radius: 8px; padding: 20px; background: #fafafa; }
+        .submit-btn:hover { background-color: var(--gold-hover); }
 
-        /* --- KINGDOM HEARTS DLC --- */
-        .kh-dlc {
-            background: var(--bg-cream); color: var(--text-dark);
-            border: 2px solid var(--tuscan-gold); border-radius: 12px; padding: clamp(25px, 5vw, 40px);
-            text-align: center; margin-top: 60px; width: 100%; max-width: 700px;
-        }
-        .kh-dlc h3 { font-family: 'Cinzel', serif; font-weight: 700; color: var(--tuscan-wine); font-size: clamp(1.2rem, 4vw, 1.8rem); margin-bottom: 20px;}
-        .iban-box-kh { 
-            background: rgba(197, 160, 89, 0.1); color: var(--tuscan-olive-dark); padding: 18px; border: 1px dashed var(--tuscan-gold); border-radius: 8px;
-            font-family: 'Press Start 2P', monospace; font-size: clamp(0.7rem, 2.5vw, 1rem); 
-            margin: 25px auto 10px; letter-spacing: 1px; word-break: break-all;
-        }
+        /* --- GIFT --- */
+        .gift-box { text-align: center; margin-top: 60px; padding-top: 60px; border-top: 1px solid #EEE; max-width: 600px; margin-left: auto; margin-right: auto;}
+        .gift-box p { font-size: 0.95rem; color: var(--text-light); margin-bottom: 20px; }
+        .iban { font-family: 'Montserrat', monospace; font-size: 1.1rem; letter-spacing: 1px; color: var(--text-dark); background: var(--bg-color); padding: 15px; display: inline-block; }
 
-        /* --- VISUAL EASTER EGGS ANIMATIONS --- */
-        .interactive-icon { cursor: pointer; transition: 0.3s; display: inline-block; }
-        .interactive-icon:hover { transform: scale(1.2); color: var(--tuscan-gold); }
-        
-        .spin-anim { animation: spin 0.6s ease-in-out; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .shake-card { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
-        @keyframes shake {
-            10%, 90% { transform: translate3d(-1px, 0, 0); }
-            20%, 80% { transform: translate3d(2px, 0, 0); }
-            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-            40%, 60% { transform: translate3d(4px, 0, 0); }
-        }
-        .p5-flash { animation: flashRed 0.6s ease-out; }
-        @keyframes flashRed {
-            0% { box-shadow: inset 0 0 0 1000px rgba(114, 47, 55, 0.4); } /* Soft wine flash */
-            100% { box-shadow: inset 0 0 0 0 rgba(114, 47, 55, 0); }
-        }
     </style>
 </head>
 <body class="lang-it">
 
     <!-- LANGUAGE SWITCHER -->
     <div class="lang-switcher">
-        <button class="lang-btn active" id="btn-it" onclick="setLang('it')">ITA</button>
-        <button class="lang-btn" id="btn-en" onclick="setLang('en')">ENG</button>
+        <button class="lang-btn active" id="btn-it" onclick="setLang('it')">IT</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
 
-    <!-- HERO SECTION -->
-    <section id="hero" class="section">
-        <h1 id="hero-title" class="font-retro">Ale & Tia <br>WEDDING<br>Final Mix</h1>
-        <p style="font-size: clamp(1.1rem, 4vw, 1.5rem); margin-top: 10px; font-weight: 300; letter-spacing: 1px;">
-            <span class="it">4 - 5 - 6 Giugno 2027 <br> Castelfiorentino</span>
-            <span class="en">June 4 - 5 - 6, 2027 <br> Castelfiorentino</span>
+    <!-- HERO -->
+    <section id="hero">
+        <h1 class="title">Ale & Tia</h1>
+        <p class="subtitle">
+            <span class="it">4 - 6 Giugno 2027 &bull; Castelfiorentino</span>
+            <span class="en">June 4 - 6, 2027 &bull; Castelfiorentino</span>
         </p>
-        
-        <ul class="kh-menu font-retro">
-            <li><a href="#codec"><i class="fa-solid fa-walkie-talkie"></i> <span class="it">MISSIONE</span><span class="en">MISSION</span></a></li>
-            <li><a href="#stats"><i class="fa-solid fa-hand-sparkles"></i> CHARACTER SCREEN</a></li>
-            <li><a href="#story"><i class="fa-solid fa-book-journal-whills"></i> <span class="it">LA STORIA</span><span class="en">THE STORY</span></a></li>
-            <li><a href="#location"><i class="fa-solid fa-map-location-dot"></i> LOCATION</a></li>
-            <li><a href="#accommodation"><i class="fa-solid fa-bed"></i> <span class="it">DOVE DORMIRE</span><span class="en">ACCOMMODATION</span></a></li>
-            <li><a href="#equipment"><i class="fa-solid fa-shield-halved"></i> EQUIP</a></li>
-            <li><a href="#program"><i class="fa-solid fa-scroll"></i> <span class="it">PROGRAMMA</span><span class="en">PROGRAM</span></a></li>
-            <li><a href="#rsvp"><i class="fa-solid fa-envelope"></i> JOIN PARTY</a></li>
+        <div class="divider"></div>
+        <ul class="nav-links">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#program">Program</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
         </ul>
-        
-        <a href="#codec" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
     </section>
 
-    <!-- MGS3 CODEC SECTION -->
-    <section id="codec" class="font-mgs">
-        <h2 class="codec-freq" id="codec-freq-text">FREQ 140.85</h2>
-        <div class="codec-faces">
-            <div class="codec-face">
-                <i class="fas fa-user-secret"></i>
-                <span>TIA</span>
-            </div>
-            <div class="codec-wave">
-                <div class="wave-line"></div>
-                <div class="wave-line" style="animation-delay: 0.2s; height: 3px;"></div>
-                <div class="wave-line" style="animation-delay: 0.4s;"></div>
-            </div>
-            <div class="codec-face">
-                <i class="fas fa-user-ninja"></i>
-                <span>ALE</span>
-            </div>
-        </div>
-        <div class="codec-dialogue" id="dialogue-box">
-            <p class="line-1"><strong>TIA:</strong> 
-                <span class="it">Ale, sei arrivata al Save point?</span>
-                <span class="en">Ale, did you reach the Save point?</span>
-            </p>
-            <p class="line-2"><strong>ALE:</strong> 
-                <span class="it">Sono al Grande Prato. Qual è l'obiettivo della missione?</span>
-                <span class="en">I'm at Il Grande Prato. What's the mission objective?</span>
-            </p>
-            <p class="line-3"><strong>TIA:</strong> 
-                <span class="it">Semplice. Rilassarsi e divertirsi tra amici per celebrare il nostro grande amore. Niente stealth né scatole in cui nascondersi questa volta, si fa casino!</span>
-                <span class="en">Simple. Relax and have fun with friends to celebrate our great love. No stealth or hiding in boxes this time, we're making some noise!</span>
-            </p>
-        </div>
-        <a href="#stats" class="scroll-indicator" style="position: relative; margin-top: 50px; left: 0; transform: none;"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
-    </section>
-
-    <!-- STATUS SCREEN -->
-    <section id="stats" class="section">
-        <h2 class="ff-title font-zelda"><i class="fa-solid fa-hand-sparkles"></i> CHOOSE YOUR CHARACTER</h2>
-        <div class="stats-container">
-            <!-- ALE -->
-            <div class="ff-menu" onclick="triggerSecret('ale')">
-                <div class="secret-egg" id="egg-ale">💩<br> <span class="it">Scemo chi legge</span><span class="en">Gotcha!</span> </div>
-                <h3 class="font-retro">ALE <i class="fa-solid fa-hat-wizard" style="float: right;"></i></h3>
-                <div class="stat-label font-retro" id="tonno-container">
-                    <span class="it">CUCINA - include <span class="lootable" id="loot-tonno">PASTA AL TONNO</span></span>
-                    <span class="en">COOKING - includes <span class="lootable" id="loot-tonno-en">TUNA PASTA</span></span>
-                    <span>23/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 23%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">TECNOLOGIA <span class="master-tag">[MASTER]</span></span>
-                    <span class="en">TECHNOLOGY <span class="master-tag">[MASTER]</span></span>
-                    <span>99/99</span>
-                </div><div class="stat-bar"><div class="stat-fill gold" style="width: 100%;"></div></div>
-                <div class="stat-label font-retro"><span>GAMING</span><span>65/99</span></div><div class="stat-bar"><div class="stat-fill" style="width: 65%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">RES. VINO</span><span class="en">WINE RES.</span>
-                    <span>80/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 80%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">SORRISO <span class="master-tag">[MASTER]</span></span>
-                    <span class="en">SMILE <span class="master-tag">[MASTER]</span></span>
-                    <span>99/99</span>
-                </div><div class="stat-bar"><div class="stat-fill gold" style="width: 100%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">ORDINE</span><span class="en">TIDINESS</span>
-                    <span>12/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 12%;"></div></div>
-            </div>
-
-            <!-- TIA -->
-            <div class="ff-menu" onclick="triggerSecret('tia')">
-                <div class="secret-egg" id="egg-tia">🏎️ <br> <span class="it">Brrrrrrrrum</span><span class="en">Vroooom</span></div>
-                <h3 class="font-retro">TIA <i class="fa-solid fa-jedi" style="float: right;"></i></h3>
-                <div class="stat-label font-retro">
-                    <span class="it">CUCINA <span class="master-tag">[MASTER]</span></span>
-                    <span class="en">COOKING <span class="master-tag">[MASTER]</span></span>
-                    <span>99/99</span>
-                </div><div class="stat-bar"><div class="stat-fill gold" style="width: 100%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">TECNOLOGIA</span><span class="en">TECHNOLOGY</span>
-                    <span>34/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 34%;"></div></div>
-                <div class="stat-label font-retro"><span>GAMING</span><span>89/99</span></div><div class="stat-bar"><div class="stat-fill" style="width: 89%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">RES. VINO</span><span class="en">WINE RES.</span>
-                    <span>63/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 63%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">SORRISO</span><span class="en">SMILE</span>
-                    <span>60/99</span>
-                </div><div class="stat-bar"><div class="stat-fill" style="width: 60%;"></div></div>
-                <div class="stat-label font-retro">
-                    <span class="it">ORDINE <span class="master-tag">[MASTER]</span></span>
-                    <span class="en">TIDINESS <span class="master-tag">[MASTER]</span></span>
-                    <span>99/99</span>
-                </div><div class="stat-bar"><div class="stat-fill gold" style="width: 100%;"></div></div>
-            </div>
-        </div>
-        <p class="font-retro" style="margin-top: 30px; font-size: clamp(0.45rem, 2vw, 0.6rem); text-align: center; color: var(--tuscan-wine);">
-            <span class="it">MALUS: Agilità limitata a 30 per eccesso di fonduta e cioccolato.</span>
-            <span class="en">MALUS: Agility capped at 30 due to excessive fondue and chocolate.</span>
-        </p>
-        <a href="#story" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
-    </section>
-
-    <!-- STORY SECTION -->
-    <section id="story" class="section">
-        <h2 class="p5-title font-zelda">
-            <i class="fa-solid fa-mask interactive-icon" id="p5-mask" title="Take Your Heart"></i> 
-            <span class="it">THE STORY SO FAR</span><span class="en">THE STORY SO FAR</span>
-        </h2>
-        <div class="story-grid">
-            <div class="story-card" id="card-coffee">
-                <h3 class="font-p5">
-                    <span class="it">L'INCONTRO</span><span class="en">THE ENCOUNTER</span> 
-                    <i class="fa-solid fa-mug-hot interactive-icon" id="coffee-boost" title="Drink!" style="margin-left: 10px; color: var(--tuscan-olive);"></i>
-                </h3>
-                <p class="it">Tia al bar del palazzo E, Ale cliente affezionata. Quel caffè era troppo buono per lasciarselo scappare: Ale ha deciso di "lootare" il barista e portarselo a casa. Per sempre un ottimo caffè a colazione, baby!</p>
-                <p class="en">Tia at building E's bar, Ale a loyal customer. That coffee was too good to pass up: Ale decided to "loot" the barista and take him home. A great coffee for breakfast forever, baby!</p>
-            </div>
-            
-            <div class="story-card" id="card-milano">
-                <h3 class="font-p5">
-                    <span class="it">MILANO</span><span class="en">MILAN</span>
-                    <i class="fa-solid fa-book-journal-whills interactive-icon" id="recipe-unlock" title="Skill Unlock!" style="float: right; color: var(--tuscan-olive);"></i>
-                </h3>
-                <p class="it">Prime quest per Ale e Tia alla scoperta della mappa del mondo di gioco. Grazie a Tia, finalmente Ale scopre l'esistenza di altre ricette oltre alla pasta al tonno!</p>
-                <p class="en">First quests for Ale and Tia discovering the world map. Thanks to Tia, Ale finally discovers the existence of other recipes besides tuna pasta!</p>
-            </div>
-            
-            <div class="story-card">
-                <h3 class="font-p5">
-                    <span class="it">SVIZZERA</span><span class="en">SWITZERLAND</span> 
-                    <i class="fa-solid fa-plane-arrival interactive-icon" id="fast-travel" title="Fast Travel" style="float: right; color: var(--tuscan-olive);"></i>
-                </h3>
-                <p class="it">Trasferimento Ale e Tia oltre le Alpi. Nuova mappa sbloccata tra negozi chiusi la domenica e parcheggi dentro le linee bianche.</p>
-                <p class="en">Ale and Tia relocate across the Alps. New map unlocked amidst shops closed on Sundays and parking perfectly within the white lines.</p>
-            </div>
-            
-            <div class="story-card">
-                <h3 class="font-p5">NEW PARTY MEMBERS</h3>
-                <p class="it">Novembre 2022: Nasce <strong class="miniboss-tooltip" data-stats="HP: 9999 | ATK: MAX | Debolezza: Gelato">Matilde</strong>. <br> Marzo 2025: Nasce <strong class="miniboss-tooltip" data-stats="HP: 9999 | MP: 999 | Special: Urlo Sonico">Margherita</strong>. <br>Da mini-boss a membri fondamentali del Party.</p>
-                <p class="en">November 2022: <strong class="miniboss-tooltip" data-stats="HP: 9999 | ATK: MAX | Weakness: Ice Cream">Matilde</strong> is born. <br> March 2025: <strong class="miniboss-tooltip" data-stats="HP: 9999 | MP: 999 | Special: Sonic Scream">Margherita</strong> is born. <br>From mini-bosses to essential Party members.</p>
-            </div>
-        </div>
-        <a href="#location" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
-    </section>
-
-    <!-- LOCATION SECTION -->
+    <!-- LOCATION -->
     <section id="location" class="section">
-        <h2 class="zelda-title font-zelda"><i id="zelda-icon" class="fa-solid fa-mountain-sun zelda-secret"></i> IL GRANDE PRATO</h2>
-        <p style="margin-bottom: 25px; font-weight: 600; color: var(--tuscan-wine); text-align: center;">
-            <span class="it">Castelfiorentino (FI) - Un save point immerso nel verde.</span>
-            <span class="en">Castelfiorentino (FI) - A save point surrounded by nature.</span>
-        </p>
-        
-        <div class="loc-image-grid">
-            <img src="https://www.grandeprato.it/site/assets/img/gallery-inner/gallery-inner-riga1-3.jpg" alt="Il Grande Prato 1">
-            <img src="https://www.grandeprato.it/site/assets/img/camere_qua/15.jpg" alt="Il Grande Prato 2">
-            <img src="https://www.grandeprato.it/site/assets/img/camere_rett/1.jpg" alt="Il Grande Prato 3">
-            <img src="https://www.grandeprato.it/site/assets/img/camere_rett/2.jpg" alt="Il Grande Prato 4">
+        <h2 class="section-title"><span class="it">I Dettagli</span><span class="en">The Details</span></h2>
+        <div class="location-box">
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: var(--gold);">Il Grande Prato</h3>
+            <p><i class="fa-solid fa-location-dot" style="color: var(--gold); margin-right: 8px;"></i>Via Corazzano, Castelfiorentino (FI)</p>
+            <div class="divider"></div>
+            <p class="it"><strong>Dress Code:</strong> Business Casual. <br>Elegante ma confortevole. Il terreno prevede prato e ciottoli, si sconsigliano caldamente i tacchi a spillo.</p>
+            <p class="en"><strong>Dress Code:</strong> Business Casual. <br>Elegant yet comfortable. The venue includes grass and gravel, stilettos are strongly discouraged.</p>
+            
+            <p class="it" style="margin-top: 20px;"><strong>Pernottamento:</strong> <br>Abbiamo riservato le camere della tenuta e di strutture adiacenti per i nostri ospiti. Vi preghiamo di indicare le vostre preferenze nel form RSVP.</p>
+            <p class="en" style="margin-top: 20px;"><strong>Accommodation:</strong> <br>We have reserved rooms at the estate and nearby venues for our guests. Please indicate your preferences in the RSVP form.</p>
         </div>
-
-        <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/BQYxk04Xk-w" title="Il Grande Prato Video" allowfullscreen></iframe>
-        </div>
-        
-        <div class="ctr-style">
-            <p class="font-ctr" style="font-size: clamp(1.2rem, 3vw, 1.8rem); color: var(--tuscan-wine); letter-spacing: 1px;">
-                <span class="it">Che tu arrivi in kart con Crash o in aereo con Cortex, calcola qui il percorso!</span>
-                <span class="en">Whether you arrive by kart with Crash or plane with Cortex, calculate your route!</span>
-            </p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.4514292696645!2d10.99463027701418!3d43.61796237110375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a41c09003781b%3A0xa72a389d6f14dd03!2sIl%20Grande%20Prato!5e0!3m2!1sit!2sit!4v1777836829156!5m2!1sit!2sit" width="100%" height="400" style="border: 2px solid #eee; border-radius: 8px; margin-top: 20px;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-
-        <a href="#accommodation" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
-    </section>
-
-    <!-- DOVE DORMIRE -->
-    <section id="accommodation" class="section">
-        <div class="sw-container">
-            <h2 class="sw-title">
-                <i class="fa-solid fa-jedi interactive-icon" id="jedi-icon"></i> 
-                <span class="it">DOVE DORMIRE</span><span class="en">WHERE TO SLEEP</span>
-            </h2>
-            <div class="it">
-                <p><strong>UNA NUOVA SPERANZA...</strong></p>
-                <p>Maggiori informazioni in arrivo.</p>
-                <p>Ci sarà disponibilità per alcuni membri dell'Alleanza presso <strong>Il Grande Prato</strong> e altre strutture alleate nella stessa galassia, a massimo 10 minuti di distanza (o 12 parsec in auto).</p>
-                <p style="font-size: 0.85rem; margin-top: 30px; font-style: italic;">Restate in attesa di nuove trasmissioni...</p>
-            </div>
-            <div class="en">
-                <p><strong>A NEW HOPE...</strong></p>
-                <p>More information yet to come.</p>
-                <p>There will be availability for some members of the Alliance at <strong>Il Grande Prato</strong> and other allied outposts in the same galaxy, at a maximum of 10 minutes away (or 12 parsecs by car).</p>
-                <p style="font-size: 0.85rem; margin-top: 30px; font-style: italic;">Await further transmissions...</p>
-            </div>
-        </div>
-        <a href="#equipment" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
-    </section>
-
-    <!-- EQUIPAGGIAMENTO -->
-    <section id="equipment" class="section">
-        <h2 class="ff-title font-zelda">
-            <i class="fa-solid fa-gem"></i> 
-            <span class="it">EQUIPAGGIAMENTO</span><span class="en">EQUIPMENT</span>
-        </h2>
-        <div class="ffx-grid">
-            <div class="ffx-card">
-                <h3><i class="fa-solid fa-vest"></i> <span class="it">ARMOR & BOOTS</span><span class="en">ARMOR & BOOTS</span></h3>
-                <p class="it">Il Dress Code è <strong>Business Casual</strong>. Vogliamo vedervi eleganti, ma senza rinunciare a comodità, colori e freschezza!</p>
-                <p class="it" style="color: var(--tuscan-olive); font-style: italic; font-size: 0.85rem;">(N.B. Il matrimonio NON è a tema videogiochi, quello è solo il sito!)</p>
-                <p class="it" style="margin-top: 10px;">Il terreno del raid è composto da erba e ciottoli. Scegliete <strong>scarpe comode</strong> ed evitate i tacchi a spillo (malus in agilità -10!).</p>
-                
-                <p class="en">Dress Code is <strong>Business Casual</strong>. Elegant, but comfortable!</p>
-                <p class="en" style="color: var(--tuscan-olive); font-style: italic; font-size: 0.85rem;">(N.B. The wedding is NOT videogame-themed, just the website!)</p>
-                <p class="en" style="margin-top: 10px;">The raid terrain is grass and pebbles. Choose <strong>comfortable shoes</strong> and avoid stilettos (-10 agility!).</p>
-            </div>
-            <div class="ffx-card">
-                <h3><i class="fa-solid fa-fire-flame-curved"> </i><i class="fa-solid fa-volleyball interactive-icon" id="blitzball-icon" style="margin-left: 5px;"></i> <span class="it">HEAT & BLITZBALL</span><span class="en">HEAT & BLITZBALL</span></h3>
-                <p class="it">Prevediamo che le temperature saliranno verso i <strong>30 gradi</strong>. Equipaggiate abiti leggeri per non subire danni da calore.</p>
-                <p class="it" style="margin-top: 10px;">Inoltre, non dimenticate di mettere in inventario <strong>costume da bagno e ciabatte</strong> per rilassarvi nell'arena della piscina!</p>
-
-                <p class="en">Temperatures might reach <strong>30 degrees</strong>. Equip light clothing to avoid heat damage.</p>
-                <p class="en" style="margin-top: 10px;">Also, don't forget your <strong>swimsuit and flip-flops</strong> to relax in the pool arena!</p>
-            </div>
-            <div class="ffx-card" style="grid-column: 1 / -1; background-color: var(--bg-cream);">
-                <h3><i class="fa-solid fa-gamepad"></i> THE GOLD SAUCER <span class="it">(MINIGIOCHI E SPORT)</span><span class="en">(MINIGAMES & SPORTS)</span></h3>
-                <div class="it">
-                    <p>Il Grande Prato è un vero parco divertimenti! La tenuta dispone di <strong>campi da tennis e palestra</strong>.</p>
-                    <p>C'è anche un'area tranquilla per chi vuole portarsi il <strong>tappetino da Yoga</strong> per ricaricare gli MP. </p>
-                    <p>E preparate i pollici: sono altamente previsti <strong>tornei alla Switch e card game</strong> per chi vuole sfidare la Gilda!</p>
-                </div>
-                <div class="en">
-                    <p>The estate features <strong>tennis courts and a gym</strong>. Bring your gear! </p>
-                    <p>There is also a quiet area for those who want to bring a <strong>Yoga mat</strong> to recharge their MP. </p>
-                    <p>And prep your thumbs: impromptu <strong>Nintendo Switch and card game tournaments</strong> are highly expected!</p>
-                </div>
-            </div>
-            <div class="ffx-card" style="grid-column: 1 / -1; border-color: var(--tuscan-wine);">
-                <h3 style="color: var(--tuscan-wine);"><i class="fa-solid fa-paw"></i> COMPANION</h3>
-                <p class="it">Purtroppo non è possibile portare pet companions, summons, mount e <strong> cani</strong> nella location. </p>
-                <p class="en">Unfortunately, it is not possible to bring pet companions, summons, mounts, and <strong>dogs</strong> to the location. </p>
-            </div>
-        </div>
-        <a href="#program" class="scroll-indicator"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
     </section>
 
     <!-- PROGRAMMA -->
     <section id="program" class="section">
-        <h2 class="quest-title font-zelda"><i class="fa-solid fa-user-shield"></i> <span class="it">PROGRAMMA</span><span class="en">PROGRAM</span></h2>
-        
-        <div class="quest-item" id="friday-quest">
-            <h3 class="font-retro"><i class="fa-solid fa-star"></i> <span class="it">VENERDÌ 4 GIUGNO: TUTORIAL</span><span class="en">FRIDAY, JUNE 4: TUTORIAL</span></h3>
-            <div class="it">
-                <p>L'arrivo al campo base. Prendetevi il vostro tempo per esplorare la mappa, fare il check-in e godervi la piscina.</p>
-                <p>Nel tardo pomeriggio il forno si accende: <strong>Cena per tutta la Compagnia!</strong> Inizieremo a testare i vini e il cibo della Taverna.</p>
-                <span class="quest-detail">[!] OBIETTIVO: Rilassarsi e non consumare troppa stamina prima del giorno successivo.</span>
+        <h2 class="section-title"><span class="it">Il Programma</span><span class="en">The Schedule</span></h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <h3><span class="it">Venerdì 4 Giugno &bull; Il Benvenuto</span><span class="en">Friday, June 4 &bull; Welcome</span></h3>
+                <p class="it">Arrivo in struttura a partire dal pomeriggio. Seguirà una cena informale per tutti gli ospiti presenti, per iniziare i festeggiamenti in totale relax.</p>
+                <p class="en">Arrival at the venue starting in the afternoon. A casual welcome dinner will follow for all attending guests to kick off the celebrations.</p>
             </div>
-            <div class="en">
-                <p>Arrival at base camp. Take your time to explore, check-in, and enjoy the pool.</p>
-                <p>In the late afternoon, ovens fire up: <strong>Dinner for the Fellowship!</strong> We'll start testing the Tavern's food and wine.</p>
-                <span class="quest-detail">[!] OBJECTIVE: Relax and don't consume too much stamina.</span>
+            
+            <div class="timeline-item">
+                <h3><span class="it">Sabato 5 Giugno &bull; Il Matrimonio</span><span class="en">Saturday, June 5 &bull; The Wedding</span></h3>
+                <p class="it">Ore 15:00: Cerimonia nuziale. A seguire brindisi, cena toscana e festeggiamenti musicali a oltranza.</p>
+                <p class="en">3:00 PM: Wedding Ceremony. Followed by toasts, a traditional Tuscan dinner, and endless music and celebration.</p>
             </div>
+            
+            <div class="timeline-item">
+                <h3><span class="it">Domenica 6 Giugno &bull; I Saluti</span><span class="en">Sunday, June 6 &bull; Farewells</span></h3>
+                <p class="it">Risveglio lento e Brunch in compagnia prima di salutarci e ripartire nel pomeriggio.</p>
+                <p class="en">Slow morning and a farewell Brunch together before heading back in the afternoon.</p>
+            </div>
+
         </div>
-        
-        <div class="quest-item" style="border-left-color: var(--tuscan-gold);">
-            <h3 class="font-retro" style="color: var(--tuscan-wine);"><i class="fa-solid fa-crown"></i> <span class="it">SABATO 5 GIUGNO: MAIN QUEST</span><span class="en">SATURDAY, JUNE 5: MAIN QUEST</span></h3>
-            <div class="it">
-                <p>Il giorno del Raid Finale. La mattina è a vostra disposizione per minigiochi o per farmare exp in piscina.</p>
-                <p><strong>Ore 15:00 - INIZIO MATRIMONIO</strong> <br>Un evento per sancire la nostra alleanza eterna. <br>A seguire, la festa! Vi attende un banchetto toscano di livello leggendario, musica e Burrobirra fino a esaurimento MP.</p>
-                <span class="quest-detail" style="color: var(--tuscan-olive);">[!] LOOT PREVISTO: Quantità industriali di cibo, giochi, ricordi epici e zero ore di sonno.</span>
-            </div>
-            <div class="en">
-                <p>The Final Raid. The morning is yours for minigames or farming exp in the pool.</p>
-                <p><strong>3:00 PM - WEDDING START</strong> <br>An event to seal our alliance. <br>Following that, the party! A legendary Tuscan banquet awaits, music, and Butterbeer until your MP is depleted.</p>
-                <span class="quest-detail" style="color: var(--tuscan-olive);">[!] EXPECTED LOOT: Food, games, epic memories, and zero hours of sleep.</span>
-            </div>
-        </div>
-        
-        <div class="quest-item">
-            <h3 class="font-retro">
-                <i class="fa-solid fa-mug-hot"></i> <span class="it">DOMENICA 6 GIUGNO: EPILOGO</span><span class="en">SUNDAY, JUNE 6: EPILOGUE</span>
-                <i class="fa-solid fa-hourglass-half interactive-icon" id="song-of-time" title="Song of Time" style="float: right; color: var(--tuscan-olive);"></i>
-            </h3>
-            <div class="it">
-                <p>Nessuna fretta. Ci sveglieremo con calma per un <strong>Brunch della Compagnia</strong>, fondamentale per rimuovere i debuff della sera precedente.</p>
-                <p>Dopo il pranzo, potremo salutarci e procedere al log-out definitivo dalla struttura entro il pomeriggio.</p>
-                <span class="quest-detail">[!] STATUS PARTY: Esausti, ma incredibilmente felici.</span>
-            </div>
-            <div class="en">
-                <p>No rush. We'll wake up slowly for a <strong>Fellowship Brunch</strong>, essential to remove the previous night's debuffs.</p>
-                <p>After lunch, we can say our goodbyes and proceed to final log-out by the afternoon.</p>
-                <span class="quest-detail">[!] PARTY STATUS: Exhausted, but incredibly happy.</span>
-            </div>
-        </div>
-        
-        <a href="#rsvp" class="scroll-indicator" style="color: var(--bg-cream);"><i class="fas fa-chevron-down"></i><i class="fas fa-chevron-down" style="margin-top: -10px;"></i></a>
     </section>
 
-    <!-- RSVP SECTION -->
-    <section id="rsvp" class="section">
-        <h2 class="rsvp-title font-zelda"><i class="fa-solid fa-gamepad"></i> JOIN THE PARTY <br> 
-            <span class="it" style="font-size: 1rem; font-family: 'Montserrat', sans-serif; font-weight: normal; letter-spacing: 0;">RISPONDERE ENTRO: OTTOBRE 2026</span>
-            <span class="en" style="font-size: 1rem; font-family: 'Montserrat', sans-serif; font-weight: normal; letter-spacing: 0;">RESPOND BY: OCTOBER 2026</span>
-        </h2>
-        
-        <div class="rsvp-form-mock">
-            <h3 class="font-retro" style="color: var(--tuscan-wine); margin-bottom: 15px; font-size: 1.1rem; text-align: center;">RSVP FORM</h3>
-            <p class="it" style="color: var(--tuscan-olive); margin-bottom: 25px; font-size: 0.9rem; text-align: center;">Compila i campi per registrare il tuo salvataggio nel database.</p>
-            <p class="en" style="color: var(--tuscan-olive); margin-bottom: 25px; font-size: 0.9rem; text-align: center;">Fill out the fields to register your save data in the database.</p>
-            
-            <form id="wedding-form" class="pixel-form font-retro" action="https://script.google.com/macros/s/AKfycbxGhcRBjpWm9jotgs-Be7PhVA7ltlgZdG9S4Vjs-pivCekAI92M_70LHlCdlEk4EFk/exec" method="POST">
-                <input type="hidden" name="Totale_Bambini_Sotto_4_Anni" id="tot_under_4" value="0">
-                <input type="hidden" name="Totale_Bambini_Sopra_Uguale_4_Anni" id="tot_over_4" value="0">
+    <!-- RSVP & GIFT -->
+    <section id="rsvp">
+        <h2 class="section-title" style="text-align: center;"><span class="it">Conferma la tua presenza</span><span class="en">RSVP</span></h2>
+        <p class="subtitle" style="text-align: center; text-transform: none; letter-spacing: 0; margin-bottom: 40px;">
+            <span class="it">Vi preghiamo di rispondere entro <strong>Ottobre 2026</strong>.</span>
+            <span class="en">Please respond by <strong>October 2026</strong>.</span>
+        </p>
 
-                <div>
-                    <label class="it">Nomi dei partecipanti principali:</label>
-                    <label class="en">Names of main participants:</label>
-                    <input type="text" name="Nomi_Partecipanti" required placeholder="Es. Cloud e Aerith">
-                </div>
+        <div class="form-container">
+            <!-- SOSTITUIRE "URL_SCRIPT" CON IL LINK DEL GOOGLE SCRIPT ORIGINALE -->
+            <form class="elegant-form" action="https://script.google.com/macros/s/AKfycbxGhcRBjpWm9jotgs-Be7PhVA7ltlgZdG9S4Vjs-pivCekAI92M_70LHlCdlEk4EFk/exec" method="POST">
                 
-                <div class="form-row-inline">
-                    <label class="it">Numero Adulti:</label>
-                    <label class="en">Number of Adults:</label>
-                    <select name="Numero_Adulti" required>
-                        <option value="" disabled selected>Seleziona / Select...</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4+">4+</option>
-                    </select>
+                <div class="input-group">
+                    <label><span class="it">Nome e Cognome</span><span class="en">Full Name(s)</span></label>
+                    <input type="text" name="Nomi_Partecipanti" required placeholder="Es. Alessandra & Mattia">
                 </div>
 
-                <div id="miniboss-section">
-                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 10px;">
-                        <label class="it" style="margin:0;">Mini-Boss (Bambini)?</label>
-                        <label class="en" style="margin:0;">Mini-Boss (Kids)?</label>
-                        <button type="button" id="add-miniboss-btn" class="pixel-btn-small">
-                            <span class="it">+ AGGIUNGI</span><span class="en">+ ADD</span>
-                        </button>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="input-group" style="flex: 1; min-width: 150px;">
+                        <label><span class="it">Presenza</span><span class="en">Attending</span></label>
+                        <select name="Conferma_Presenza" required>
+                            <option value="" disabled selected>...</option>
+                            <option class="it" value="Sì">Sì, parteciperemo</option>
+                            <option class="it" value="No">No, purtroppo non potremo esserci</option>
+                            <option class="en" value="Sì">Yes, we will attend</option>
+                            <option class="en" value="No">No, we cannot attend</option>
+                        </select>
                     </div>
-                    <div id="mini-boss-list"></div>
+
+                    <div class="input-group" style="flex: 1; min-width: 150px;">
+                        <label><span class="it">Numero Adulti</span><span class="en">Number of Adults</span></label>
+                        <select name="Numero_Adulti" required>
+                            <option value="" disabled selected>...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4+">4+</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="it">Confermi la presenza?</label>
-                    <label class="en">Confirm presence?</label>
-                    <select id="presenza-select" name="Conferma_Presenza" required>
-                        <option value="" disabled selected>Seleziona / Select...</option>
-                        <option class="it" value="Sì">Sì, party pronto!</option>
-                        <option class="it" value="No">No, Game Over</option>
-                        <option class="en" value="Sì">Yes, party ready!</option>
-                        <option class="en" value="No">No, Game Over</option>
-                    </select>
+                <div class="input-group">
+                    <label><span class="it">Bambini (Numero ed età)</span><span class="en">Children (Number and ages)</span></label>
+                    <input type="text" name="Bambini_Dettagli" placeholder="...">
                 </div>
-                
-                <div>
-                    <label class="it">Pernottamento:</label>
-                    <label class="en">Overnight Stay:</label>
+
+                <div class="input-group">
+                    <label><span class="it">Pernottamento</span><span class="en">Overnight Stay</span></label>
                     <select name="Pernottamento" required>
-                        <option value="" disabled selected>Seleziona / Select...</option>
+                        <option value="" disabled selected>...</option>
                         <option class="it" value="2 Notti">Venerdì e Sabato</option>
                         <option class="it" value="1 Notte">Solo Sabato</option>
                         <option class="it" value="Nessuno">Nessun pernottamento</option>
@@ -715,60 +222,32 @@
                     </select>
                 </div>
 
-                <div>
-                    <label class="it">Condivisione Stanza:</label>
-                    <label class="en">Room Sharing:</label>
-                    <select name="Condivisione_Stanza" required>
-                        <option value="" disabled selected>Aperto a condividere? / Open to share?</option>
-                        <option class="it" value="Sì, con chiunque">Sì, nessun problema</option>
-                        <option class="it" value="Sì, ma solo con conoscenti">Sì, ma solo con amici/conoscenti</option>
-                        <option class="it" value="No">No, preferiamo stanza privata</option>
-                        <option class="it" value="N/A">Non applicabile (non pernotto)</option>
-                        <option class="en" value="Sì, con chiunque">Yes, no problem</option>
-                        <option class="en" value="Sì, ma solo con conoscenti">Yes, but only with friends</option>
-                        <option class="en" value="No">No, private room preferred</option>
-                        <option class="en" value="N/A">N/A (no stay)</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="it">Allergie/Status Ailments:</label>
-                    <label class="en">Allergies/Status Ailments:</label>
+                <div class="input-group">
+                    <label><span class="it">Allergie o restrizioni alimentari</span><span class="en">Dietary Restrictions</span></label>
                     <input type="text" name="Allergie" placeholder="...">
                 </div>
                 
-                <div>
-                    <label class="it">Commenti:</label>
-                    <label class="en">Comments:</label>
-                    <textarea name="Messaggio" rows="3" placeholder="..."></textarea>
+                <div class="input-group">
+                    <label><span class="it">Messaggio per gli sposi (Opzionale)</span><span class="en">Message to the couple (Optional)</span></label>
+                    <textarea name="Messaggio" rows="2" placeholder="..."></textarea>
                 </div>
                 
-                <button type="submit" class="pixel-btn-submit font-retro"><i class="fa-solid fa-check"></i> CONFIRM SELECTION</button>
+                <button type="submit" class="submit-btn"><span class="it">Invia Conferma</span><span class="en">Send RSVP</span></button>
             </form>
-        </div>
 
-        <!-- KINGDOM HEARTS DLC SECTION -->
-        <div class="kh-dlc">
-            <h3><i class="fa-solid fa-rocket"></i> GUMMI SHIP DLC</h3>
-            <p class="it" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6;">
-                La vostra presenza al nostro Matrimonio è già il Drop più raro che potessimo desiderare! <br><br>
-                Ma se volete aiutarci a potenziare la nostra <strong>Gummi Ship</strong> per il viaggio di nozze, potete caricare i vostri <em>Munny</em> in questo Terminale con Causale: Matrimonio Ale e Tia
-            </p>
-            <p class="en" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6;">
-                Your presence is already the rarest Drop we could wish for! <br><br>
-                But if you want to help us upgrade our <strong>Gummi Ship</strong> for our honeymoon, you can upload your <em>Munny</em> to this Terminal with the Reason: Ale and Tia Wedding.
-            </p>
-            <div class="iban-box-kh">IT53I0623001614000015426000</div>
-            <p style="font-size: 0.8rem; color: var(--tuscan-olive);"><span class="it">Intestato a</span><span class="en">Account holder</span>: Ale & Tia</p>
+            <!-- GIFT SECTION INTEGRATA SOTTO AL FORM -->
+            <div class="gift-box">
+                <h3 style="font-size: 1.5rem; color: var(--gold); margin-bottom: 15px;"><span class="it">Lista Nozze</span><span class="en">Wedding Gift</span></h3>
+                <p class="it">La vostra presenza è il dono più grande che potessimo desiderare. <br>Tuttavia, se desiderate aiutarci a realizzare il nostro viaggio di nozze, potete farlo tramite bonifico bancario:</p>
+                <p class="en">Your presence at our wedding is the greatest gift of all. <br>However, if you wish to contribute to our honeymoon, you can do so via bank transfer:</p>
+                
+                <div class="iban">IT53I0623001614000015426000</div>
+                <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-light);"><span class="it">Intestato a: Ale & Tia <br>Causale: Viaggio di nozze</span><span class="en">Account name: Ale & Tia <br>Reason: Honeymoon</span></p>
+            </div>
         </div>
     </section>
 
-    <!-- MissingNo Easter Egg -->
-    <div id="missingno" class="missingno" title="???"></div>
-
-    <!-- JS SCRIPTS -->
     <script>
-        // Language Toggle System
         function setLang(lang) {
             if (lang === 'it') {
                 document.body.classList.remove('lang-en');
@@ -782,257 +261,6 @@
                 document.getElementById('btn-it').classList.remove('active');
             }
         }
-
-        // --- EASTER EGGS LOGIC ---
-
-        // 1. Character Screen (3 click)
-        let clicksAle = 0;
-        let clicksTia = 0;
-        
-        function triggerSecret(character) {
-            if (character === 'ale') {
-                clicksAle++;
-                if (clicksAle === 3) { showEgg('egg-ale'); clicksAle = 0; }
-            } else if (character === 'tia') {
-                clicksTia++;
-                if (clicksTia === 3) { showEgg('egg-tia'); clicksTia = 0; }
-            }
-        }
-
-        function showEgg(id) {
-            const eggElement = document.getElementById(id);
-            eggElement.classList.add('active');
-            setTimeout(() => { eggElement.classList.remove('active'); }, 2000);
-        }
-
-        // 2. God Mode / Konami Code
-        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let konamiIndex = 0;
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) { activateGodMode(); konamiIndex = 0; }
-            } else { konamiIndex = 0; }
-        });
-
-        let tapCount = 0;
-        let tapTimeout;
-        document.getElementById('hero-title').addEventListener('click', () => {
-            tapCount++;
-            clearTimeout(tapTimeout);
-            if (tapCount === 7) { activateGodMode(); tapCount = 0; }
-            tapTimeout = setTimeout(() => { tapCount = 0; }, 500); 
-        });
-
-        function activateGodMode() {
-            document.body.classList.toggle('god-mode');
-            alert(document.body.classList.contains('god-mode') 
-                ? "GOD MODE ENABLED: 'Comic Sans' debuff activated." 
-                : "GOD MODE DISABLED: Returning to normal.");
-        }
-
-        // 3. MGS Game Over
-        const presenzaSelect = document.getElementById('presenza-select');
-        presenzaSelect.addEventListener('change', (e) => {
-            if (e.target.value === 'No') {
-                alert("Snake? Respond! Snake? SNAAAAAAAKE!\n\n(We're sorry you can't make it! GAME OVER)");
-            }
-        });
-
-        // 4. Looting Inventario
-        const tonnoContainer = document.getElementById('tonno-container');
-        function triggerLootItem(e) {
-            let x = e.pageX; let y = e.pageY;
-            if (e.type === 'touchend') {
-                x = e.changedTouches[0].pageX; y = e.changedTouches[0].pageY;
-            } else if (x === undefined) {
-                const rect = tonnoContainer.getBoundingClientRect();
-                x = rect.left + window.scrollX + rect.width / 2; y = rect.top + window.scrollY + rect.height / 2;
-            }
-            const floatingText = document.createElement('div');
-            floatingText.classList.add('floating-loot');
-            floatingText.innerText = "+1 Item Looted!";
-            floatingText.style.left = x + 'px'; floatingText.style.top = y + 'px';
-            document.body.appendChild(floatingText);
-            setTimeout(() => { floatingText.remove(); }, 1200);
-            setTimeout(() => { alert("You looted 1x Tuna Pasta!\nHP and MP fully restored."); }, 100);
-        }
-
-        document.getElementById('loot-tonno').addEventListener('click', (e) => { e.stopPropagation(); triggerLootItem(e); });
-        if(document.getElementById('loot-tonno-en')) {
-            document.getElementById('loot-tonno-en').addEventListener('click', (e) => { e.stopPropagation(); triggerLootItem(e); });
-        }
-
-        let lastTapTonno = 0;
-        tonnoContainer.addEventListener('touchend', (e) => {
-            let currentTime = new Date().getTime();
-            let tapLength = currentTime - lastTapTonno;
-            if (tapLength < 500 && tapLength > 0) { e.preventDefault(); e.stopPropagation(); triggerLootItem(e); }
-            lastTapTonno = currentTime;
-        });
-
-        // 5. Zelda Secret Sound
-        document.getElementById('zelda-icon').addEventListener('click', (e) => {
-            const zeldaSound = new Audio('https://www.myinstants.com/media/sounds/zelda-secret-sound-effect.mp3');
-            zeldaSound.volume = 0.5;
-            zeldaSound.play().catch(err => console.log("Audio blocked."));
-            
-            const heart = document.createElement('div');
-            heart.classList.add('floating-loot'); heart.innerHTML = '❤️ Secret Found!';
-            heart.style.left = e.pageX + 'px'; heart.style.top = (e.pageY - 20) + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 1500);
-        });
-
-        // 6. MissingNo Glitch
-        document.getElementById('missingno').addEventListener('click', () => {
-            document.body.style.filter = "invert(100%) sepia(50%) hue-rotate(90deg)";
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'instant' });
-                alert("A wild MissingNo appeared! Got away safely.");
-                document.body.style.filter = "none";
-            }, 300);
-        });
-
-        // 7. Codec Frequency
-        let codecTaps = 0; let codecTimeout;
-        const freqText = document.getElementById('codec-freq-text');
-        freqText.addEventListener('click', () => {
-            codecTaps++; clearTimeout(codecTimeout);
-            if (codecTaps === 3) {
-                freqText.innerText = "FREQ 140.96";
-                const originalHTML = document.getElementById('dialogue-box').innerHTML;
-                document.getElementById('dialogue-box').innerHTML = `
-                    <p style="color:var(--tuscan-gold); opacity:1; transform:translateX(0); margin-bottom:15px;"><strong>MEI LING:</strong> Ciao! Sono Mei Ling. Non dimenticare di salvare la data!</p>
-                    <p style="color:var(--tuscan-gold); opacity:1; transform:translateX(0); margin-bottom:15px;"><strong>SNAKE:</strong> Ricevuto. RSVP in compilazione.</p>
-                    <p style="color:var(--tuscan-gold); opacity:1; transform:translateX(0); margin-bottom:15px;"><strong>MEI LING:</strong> Ci vediamo al Grande Prato. Over and out!</p>
-                `;
-                setTimeout(() => {
-                    freqText.innerText = "FREQ 140.85";
-                    document.getElementById('dialogue-box').innerHTML = originalHTML;
-                    const box = document.getElementById('dialogue-box');
-                    box.classList.remove("start-dialogue"); void box.offsetWidth; box.classList.add("start-dialogue");
-                }, 7000);
-                codecTaps = 0;
-            }
-            codecTimeout = setTimeout(() => { codecTaps = 0; }, 400);
-        });
-
-        // P5 Calling Card
-        document.getElementById('p5-mask').addEventListener('click', function() {
-            this.classList.remove('spin-anim'); void this.offsetWidth; this.classList.add('spin-anim');
-            const storySection = document.getElementById('story');
-            storySection.classList.remove('p5-flash'); void storySection.offsetWidth; storySection.classList.add('p5-flash');
-            setTimeout(() => { alert("✉️ CALLING CARD:\n\nSirs & Madams,\nWe are ready to take your hearts on June 5th!\n\n- The Phantom Thieves"); }, 200);
-        });
-
-        // Caffeine Rush
-        document.getElementById('coffee-boost').addEventListener('click', (e) => {
-            const card = document.getElementById('card-coffee');
-            card.classList.remove('shake-card'); void card.offsetWidth; card.classList.add('shake-card');
-            const floatingBuff = document.createElement('div');
-            floatingBuff.classList.add('floating-loot'); floatingBuff.innerHTML = '⚡ +100 SPEED!';
-            floatingBuff.style.left = e.pageX + 'px'; floatingBuff.style.top = e.pageY + 'px';
-            document.body.appendChild(floatingBuff);
-            setTimeout(() => { floatingBuff.remove(); }, 1200);
-        });
-
-        // Milano Recipe Unlock
-        const milanoCard = document.getElementById('card-milano');
-        const recipeIcon = document.getElementById('recipe-unlock');
-        function triggerLevelUp(e) {
-            let x = e.pageX; let y = e.pageY;
-            if (e.type === 'touchend') { x = e.changedTouches[0].pageX; y = e.changedTouches[0].pageY; }
-            else if (x === undefined) { const rect = milanoCard.getBoundingClientRect(); x = rect.left + window.scrollX + rect.width / 2; y = rect.top + window.scrollY + rect.height / 2; }
-            const floatingLevel = document.createElement('div');
-            floatingLevel.classList.add('floating-loot'); floatingLevel.innerHTML = '⬆️ LEVEL UP!';
-            floatingLevel.style.left = x + 'px'; floatingLevel.style.top = y + 'px';
-            document.body.appendChild(floatingLevel);
-            setTimeout(() => { floatingLevel.remove(); }, 1200);
-            setTimeout(() => { alert("✨ LEVEL UP!\nAle's Cooking Skill increased by 1!\n\nYou unlocked: [Tuna-free Recipe Book]"); }, 100);
-        }
-        recipeIcon.addEventListener('click', (e) => { e.stopPropagation(); triggerLevelUp(e); });
-        let lastTapMilano = 0;
-        milanoCard.addEventListener('touchend', (e) => {
-            let currentTime = new Date().getTime(); let tapLength = currentTime - lastTapMilano;
-            if (tapLength < 500 && tapLength > 0) { e.preventDefault(); triggerLevelUp(e); }
-            lastTapMilano = currentTime;
-        });
-
-        // Fast Travel
-        document.getElementById('fast-travel').addEventListener('click', () => { alert("✈️ FAST TRAVEL COMPLETED!\n\nYou crossed the Swiss border.\n-500 Munny deducted for customs taxes."); });
-
-        // Song of Time
-        document.getElementById('song-of-time').addEventListener('click', () => {
-            alert("🎵 ▶ 🔽 🔼 ▶ 🔽 🔼\n\nYou played the Song of Time...\nReturning to the Dawn of the First Day!");
-            document.getElementById('friday-quest').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // FFX Blitzball
-        document.getElementById('blitzball-icon').addEventListener('click', function(e) {
-            this.classList.remove('spin-anim'); void this.offsetWidth; this.classList.add('spin-anim');
-            setTimeout(() => { alert("🌊 JECHT SHOT!\n\nYou unlocked the ultimate Blitzball ability for the pool party!\n[MP COST: 0 | DMG: 9999]"); }, 300);
-        });
-
-        // Star Wars Jedi
-        document.getElementById('jedi-icon').addEventListener('click', function(e) {
-            const swContainer = document.querySelector('.sw-container');
-            swContainer.style.boxShadow = "0 0 30px #C5A059"; 
-            swContainer.style.borderColor = "#C5A059";
-            
-            const floatingForce = document.createElement('div');
-            floatingForce.classList.add('floating-loot'); floatingForce.innerHTML = '⚔️ THE FORCE IS STRONG!';
-            floatingForce.style.left = (e.pageX || (e.changedTouches && e.changedTouches[0].pageX)) + 'px';
-            floatingForce.style.top = (e.pageY || (e.changedTouches && e.changedTouches[0].pageY)) + 'px';
-            document.body.appendChild(floatingForce);
-            
-            setTimeout(() => { floatingForce.remove(); }, 1500);
-            setTimeout(() => {
-                swContainer.style.boxShadow = "none"; 
-                swContainer.style.borderColor = "var(--tuscan-gold)";
-                alert("✨ \"These are not the newlyweds you're looking for... oh wait, yes they are!\"");
-            }, 600);
-        });
-
-        // Intersection Observer per MGS Dialog
-        document.addEventListener("DOMContentLoaded", function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("start-dialogue"); } });
-            }, { threshold: 0.5 });
-            observer.observe(document.getElementById("dialogue-box"));
-        });
-
-        // Gestione Miniboss Form
-        let childCounter = 0;
-        document.getElementById('add-miniboss-btn').addEventListener('click', () => {
-            childCounter++;
-            const container = document.getElementById('mini-boss-list');
-            const row = document.createElement('div');
-            row.className = 'form-row-inline'; row.style.marginTop = '15px'; row.style.padding = '10px'; row.style.background = '#fff'; row.style.borderRadius = '5px'; row.style.border = '1px dashed var(--tuscan-gold)';
-            
-            let ageOptions = '<option value="" disabled selected> Età / Age </option>';
-            for(let i = 0; i <= 17; i++) { ageOptions += `<option value="${i}">${i}</option>`; }
-
-            row.innerHTML = `
-                <select class="miniboss-age" name="Eta_MiniBoss_${childCounter}" required style="font-family:'Montserrat', sans-serif; padding:10px; flex-grow: 1;">
-                    ${ageOptions}
-                </select>
-                <button type="button" onclick="this.parentElement.remove();" style="background: var(--tuscan-wine); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; font-weight: bold;">X</button>
-            `;
-            container.appendChild(row);
-        });
-
-        // Intercetta submit form per i bimbi
-        document.getElementById('wedding-form').addEventListener('submit', function(e) {
-            let under4 = 0; let over4 = 0;
-            document.querySelectorAll('.miniboss-age').forEach(select => {
-                let age = parseInt(select.value);
-                if(!isNaN(age)) { if(age < 4) { under4++; } else { over4++; } }
-            });
-            document.getElementById('tot_under_4').value = under4;
-            document.getElementById('tot_over_4').value = over4;
-        });
     </script>
 </body>
 </html>
